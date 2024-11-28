@@ -6,7 +6,7 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState(); // Define el estado correctamente
 }
 
 class _SplashScreenState extends State<SplashScreen> {
@@ -17,14 +17,14 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // Inicia el progreso y navega automáticamente después de 10 segundos
     _startProgress();
-    Timer(Duration(seconds: 10), () {
+    Timer(const Duration(seconds: 10), () {
       Navigator.pushReplacementNamed(context, '/home'); // Navegar a la pantalla principal
     });
   }
 
   // Función para simular el progreso de la barra
   void _startProgress() {
-    Timer.periodic(Duration(milliseconds: 100), (timer) {
+    Timer.periodic(const Duration(milliseconds: 100), (timer) {
       setState(() {
         _progress += 0.01; // Aumenta el progreso
       });
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
             // Animación Lottie centrada
             AnimatedOpacity(
               opacity: 1.0,
-              duration: Duration(seconds: 10), // Animación fade-in de 10 segundos
+              duration: const Duration(seconds: 10), // Animación fade-in de 10 segundos
               child: Lottie.asset(
                 'assets/animations/welcome.json', // Ruta del archivo JSON
                 width: 250,
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 width: 200.0, // Ajusta el ancho de la barra de progreso
                 child: LinearProgressIndicator(
                   value: _progress, // Vincula el progreso a la variable
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white), // Color de la barra
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.white), // Color de la barra
                   backgroundColor: Colors.blueAccent, // Color del fondo de la barra
                 ),
               ),
